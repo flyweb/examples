@@ -1,0 +1,14 @@
+
+.segment {
+  margin: 20px;
+}
+
+.availableFile {
+  border: 1px solid red;
+  padding: 5px;
+}
+
+.logentry {
+  padding-top: 10px;
+  border-top: 1px solid #888;
+}

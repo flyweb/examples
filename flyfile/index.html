@@ -1,0 +1,28 @@
+<html>
+<head>
+  <title>FlyFile</title>
+  <script type="text/javascript" src="flyfile.js"></script>
+  <link rel="stylesheet" type="text/css" href="flyfile.css">
+</head>
+<body onload="main()">
+  <div class="segment">
+    File to share:
+      <input type="file" multiple="multiple" id="sharedfiles" onchange="fileChanged()"></input>
+      <br/>
+  </div>
+
+  <div class="segment">
+    Name to share as:
+      <input type="text" id="sharename" name="sharedname"></input>
+      <br/>
+  </div>
+
+  <div class="segment">
+    <input type="button" value="Share" onclick="share()"></input>
+  </div>
+
+  <div class="segment">
+    <div id="log"></div>
+  </div>
+</body>
+</html>
