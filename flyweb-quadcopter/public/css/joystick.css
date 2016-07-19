@@ -1,0 +1,92 @@
+.joystick {
+  background: rgba(0, 0, 0, 0.2);
+  border: 10px solid transparent;
+  border-radius: 20px;
+  box-shadow: 0 1px 3px rgba(0, 0, 0, 0.5);
+  width: 300px;
+  height: 300px;
+  position: relative;
+  perspective: 500px;
+}
+
+.joystick:before {
+  content: '';
+  background: #000;
+  border-radius: 50%;
+  position: absolute;
+  top: 40px;
+  right: 40px;
+  bottom: 40px;
+  left: 40px;
+}
+
+.joystick-handle {
+  background: #303030;
+  border-radius: 50px 50px 100px 100px / 50px 50px 150px 150px;
+  box-shadow: 0 2px 8px 1px rgba(0, 0, 0, 0.2);
+  position: absolute;
+  width: 100px;
+  height: 100px;
+  top: 100px;
+  left: 100px;
+  z-index: 4;
+  transform-style: preserve-3d;
+}
+
+.joystick-handle:before {
+  content: '';
+  background: -moz-linear-gradient(top, rgba(248,80,50,1) 0%, rgba(241,111,92,1) 50%, rgba(246,41,12,1) 51%, rgba(240,47,23,1) 71%, rgba(231,56,39,1) 100%);
+  background: -webkit-gradient(left top, left bottom, color-stop(0%, rgba(248,80,50,1)), color-stop(50%, rgba(241,111,92,1)), color-stop(51%, rgba(246,41,12,1)), color-stop(71%, rgba(240,47,23,1)), color-stop(100%, rgba(231,56,39,1)));
+  background: -webkit-linear-gradient(top, rgba(248,80,50,1) 0%, rgba(241,111,92,1) 50%, rgba(246,41,12,1) 51%, rgba(240,47,23,1) 71%, rgba(231,56,39,1) 100%);
+  background: -o-linear-gradient(top, rgba(248,80,50,1) 0%, rgba(241,111,92,1) 50%, rgba(246,41,12,1) 51%, rgba(240,47,23,1) 71%, rgba(231,56,39,1) 100%);
+  background: -ms-linear-gradient(top, rgba(248,80,50,1) 0%, rgba(241,111,92,1) 50%, rgba(246,41,12,1) 51%, rgba(240,47,23,1) 71%, rgba(231,56,39,1) 100%);
+  background: linear-gradient(to bottom, rgba(248,80,50,1) 0%, rgba(241,111,92,1) 50%, rgba(246,41,12,1) 51%, rgba(240,47,23,1) 71%, rgba(231,56,39,1) 100%);
+  border-radius: 5px;
+  box-shadow: inset 0 1px 2px #000, 0 1px 3px 1px rgba(0, 0, 0, 0.8);
+  position: absolute;
+  top: 10px;
+  left: 30px;
+  width: 40px;
+  height: 60px;
+}
+
+.joystick-stick {
+  background: -moz-linear-gradient(top, rgba(0,0,0,1) 0%, rgba(48,48,48,1) 90%, rgba(48,48,48,1) 100%);
+  background: -webkit-gradient(left top, left bottom, color-stop(0%, rgba(0,0,0,1)), color-stop(90%, rgba(48,48,48,1)), color-stop(100%, rgba(48,48,48,1)));
+  background: -webkit-linear-gradient(top, rgba(0,0,0,1) 0%, rgba(48,48,48,1) 90%, rgba(48,48,48,1) 100%);
+  background: -o-linear-gradient(top, rgba(0,0,0,1) 0%, rgba(48,48,48,1) 90%, rgba(48,48,48,1) 100%);
+  background: -ms-linear-gradient(top, rgba(0,0,0,1) 0%, rgba(48,48,48,1) 90%, rgba(48,48,48,1) 100%);
+  background: linear-gradient(to bottom, rgba(0,0,0,1) 0%, rgba(48,48,48,1) 90%, rgba(48,48,48,1) 100%);
+  position: absolute;
+  top: 0;
+  left: 10px;
+  width: 80px;
+  height: 300px;
+  transform-style: preserve-3d;
+  transform: rotateX(90deg) translate3d(0, -1500px, 140px) scaleY(10);
+}
+
+.joystick-stick:before,
+.joystick-stick:after {
+  content: '';
+  background: -moz-linear-gradient(left, rgba(48,48,48,1) 0%, rgba(48,48,48,1) 10%, rgba(0,0,0,1) 100%);
+  background: -webkit-gradient(left top, right top, color-stop(0%, rgba(48,48,48,1)), color-stop(10%, rgba(48,48,48,1)), color-stop(100%, rgba(0,0,0,1)));
+  background: -webkit-linear-gradient(left, rgba(48,48,48,1) 0%, rgba(48,48,48,1) 10%, rgba(0,0,0,1) 100%);
+  background: -o-linear-gradient(left, rgba(48,48,48,1) 0%, rgba(48,48,48,1) 10%, rgba(0,0,0,1) 100%);
+  background: -ms-linear-gradient(left, rgba(48,48,48,1) 0%, rgba(48,48,48,1) 10%, rgba(0,0,0,1) 100%);
+  background: linear-gradient(to right, rgba(48,48,48,1) 0%, rgba(48,48,48,1) 10%, rgba(0,0,0,1) 100%);
+  position: absolute;
+  top: 0;
+  width: 300px;
+  height: 100px;
+}
+
+.joystick-stick:before {
+  left: -150px;
+  transform: rotateX(-90deg) translate3d(30px, 40px, 100px) rotateY(90deg) rotateX(10deg);
+}
+
+.joystick-stick:after {
+  right: -150px;
+  transform: rotateX(-90deg) translate3d(-30px, 40px, 100px) rotateY(90deg) rotateX(-10deg);
+}

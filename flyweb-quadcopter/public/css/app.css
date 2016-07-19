@@ -1,0 +1,66 @@
+html, body {
+  margin: 0;
+  width: 100%;
+  height: 100%;
+  overflow: hidden;
+}
+
+button {
+  background: rgba(0, 0, 0, 0.6);
+  border: 10px solid transparent;
+  border-radius: 4px;
+  box-shadow: 0 1px 3px rgba(0, 0, 0, 0.5);
+  color: #000;
+  text-shadow: 0 1px 0 rgba(255, 255, 255, 0.1);
+  font-weight: bold;
+  width: 80px;
+  height: 40px;
+}
+
+button:active {
+  background: rgba(0, 0, 0, 0.8);
+  box-shadow: 0 1px 1px rgba(0, 0, 0, 0.5);
+}
+
+#toolbar {
+  position: absolute;
+  top: 5px;
+  left: 5px;
+  z-index: 2;
+}
+
+#container {
+  background: -moz-linear-gradient(top, rgba(160,160,160,1) 0%, rgba(128,128,128,1) 47%, rgba(96,96,96,1) 100%);
+  background: -webkit-gradient(left top, left bottom, color-stop(0%, rgba(160,160,160,1)), color-stop(47%, rgba(128,128,128,1)), color-stop(100%, rgba(96,96,96,1)));
+  background: -webkit-linear-gradient(top, rgba(160,160,160,1) 0%, rgba(128,128,128,1) 47%, rgba(96,96,96,1) 100%);
+  background: -o-linear-gradient(top, rgba(160,160,160,1) 0%, rgba(128,128,128,1) 47%, rgba(96,96,96,1) 100%);
+  background: -ms-linear-gradient(top, rgba(160,160,160,1) 0%, rgba(128,128,128,1) 47%, rgba(96,96,96,1) 100%);
+  background: linear-gradient(to bottom, rgba(160,160,160,1) 0%, rgba(128,128,128,1) 47%, rgba(96,96,96,1) 100%);
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100vw;
+  height: 100vh;
+  z-index: 1;
+}
+
+@media screen and (orientation: portrait) {
+  #container {
+    left: 100vw;
+    width: 100vh;
+    height: 100vw;
+    transform-origin: 0 0;
+    transform: rotate(90deg);
+  }
+}
+
+#joystick {
+  margin-left: 5px;
+}
+
+#throttle {
+  margin-right: 5px;
+}
