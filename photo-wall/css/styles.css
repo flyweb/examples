@@ -41,6 +41,10 @@ body {
   transition: background-color .15s, border-color .15s, color .15s;
 }
 
+.btn-primary path {
+  fill: rgba(255,255,255,.8);
+}
+
 .btn-primary:active,
 .btn-primary:hover,
 .btn-primary:focus {
@@ -49,11 +53,30 @@ body {
   color: rgba(255,255,255,.9);
 }
 
+.btn-primary:active path,
+.btn-primary:hover path,
+.btn-primary:focus path {
+  fill: rgba(255,255,255,.9);
+}
+
 .btn-primary:active:hover,
 .btn-primary:active:focus {
   background-color: rgba(0,0,0,.9);
   border-color: rgba(0,0,0,.9);
   color: rgba(255,255,255,1);
+}
+
+.btn-primary:active:hover path,
+.btn-primary:active:focus path {
+  fill: rgba(255,255,255,1);
+}
+
+.btn-primary svg {
+  display: inline-block;
+  vertical-align: sub;
+  margin-bottom: .05rem;
+  width: 1.3rem;
+  height: 1.3rem;
 }
 
 .card {
