@@ -58,7 +58,7 @@ if (navigator.publishServer) {
            * which contains client-specific logic instead.
            */
           case '/js/index.js':
-            fetch('/js/index-remote.js')
+            fetch('/examples/photo-wall/js/index-remote.js')
               .then((response) => {
                 return response.blob();
               })
