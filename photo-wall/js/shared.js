@@ -54,3 +54,86 @@ $(() => {
     });
   }
 });
+
+function fixImageOrientation(file) {
+  return new Promise((resolve) => {
+    if (file.type !== 'image/jpeg') {
+      resolve(file);
+      return;
+    }
+
+    EXIF.getData(file, function() {
+      var orientation = EXIF.getTag(this, 'Orientation');
+      if (!orientation || orientation === 1) {
+        resolve(file);
+        return;
+      }
+
+      var image = new Image;
+
+      image.onload = () => {
+        var canvas = document.createElement('canvas');
+        canvas.width  = image.width;
+        canvas.height = image.height;
+
+        var ctx = canvas.getContext('2d');
+        ctx.save();
+        
+        var width       = canvas.width;
+        var height      = canvas.height;
+        var styleWidth  = canvas.style.width;
+        var styleHeight = canvas.style.height;
+        
+        if (orientation) {
+          if (orientation > 4) {
+            canvas.width        = height;
+            canvas.height       = width;
+            canvas.style.width  = styleHeight;
+            canvas.style.height = styleWidth;
+          }
+
+          switch (orientation) {
+            case 2:
+              ctx.translate(width, 0);
+              ctx.scale(-1, 1);
+              break;
+            case 3:
+              ctx.translate(width, height);
+              ctx.rotate(Math.PI);
+              break;
+            case 4:
+              ctx.translate(0, height);
+              ctx.scale(1, -1);
+              break;
+            case 5:
+              ctx.rotate(0.5 * Math.PI);
+              ctx.scale(1, -1);
+              break;
+            case 6:
+              ctx.rotate(0.5 * Math.PI);
+              ctx.translate(0, -height);
+              break;
+            case 7:
+              ctx.rotate(0.5 * Math.PI);
+              ctx.translate(width, -height);
+              ctx.scale(-1, 1);
+              break;
+            case 8:
+              ctx.rotate(-0.5 * Math.PI);
+              ctx.translate(-width, 0);
+              break;
+          }
+        }
+
+        ctx.drawImage(image, 0, 0);
+        ctx.restore();
+
+        canvas.toBlob(blob => resolve(blob), 'image/jpeg');
+
+        URL.revokeObjectURL(image.src);
+      };
+
+      image.src = URL.createObjectURL(file);
+    });
+  });
+}

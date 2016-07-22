@@ -3,7 +3,7 @@ $(() => {
   $fileInput.on('change', (evt) => {
     var photos = [].slice.apply(evt.target.files);
     photos.forEach((photo) => {
-      photoStore.add(photo);
+      fixImageOrientation(photo).then(fixedPhoto => photoStore.add(fixedPhoto));
     });
   });
 });
@@ -47,7 +47,6 @@ if (navigator.publishServer) {
           case '/api/upload':
             evt.request.blob()
               .then((photo) => {
-                console.log(evt.request, photo);
                 photoStore.add(photo);
               });
 

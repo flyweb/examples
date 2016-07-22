@@ -5,11 +5,12 @@ $(() => {
   $fileInput.on('change', (evt) => {
     var photos = [].slice.apply(evt.target.files);
     photos.forEach((photo) => {
-      console.log(photo);
-
-      var xhr = new XMLHttpRequest();
-      xhr.open('POST', '/api/upload', true);
-      xhr.send(photo);
+      fixImageOrientation(photo)
+        .then((fixedPhoto) => {
+          var xhr = new XMLHttpRequest();
+          xhr.open('POST', '/api/upload', true);
+          xhr.send(fixedPhoto);
+        });
     });
   });
 
