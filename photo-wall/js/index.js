@@ -8,6 +8,8 @@ $(() => {
   });
 });
 
+const BASE_URL = window.location.pathname.substring(0, window.location.pathname.length - 1);
+
 if (navigator.publishServer) {
   navigator.publishServer('Photo Wall')
     .then((server) => {
@@ -58,7 +60,7 @@ if (navigator.publishServer) {
            * which contains client-specific logic instead.
            */
           case '/js/index.js':
-            fetch('/examples/photo-wall/js/index-remote.js')
+            fetch(BASE_URL + '/js/index-remote.js')
               .then((response) => {
                 return response.blob();
               })
@@ -88,7 +90,7 @@ if (navigator.publishServer) {
             //
 
             var contentType;
-            fetch('/examples/photo-wall' + url)
+            fetch(BASE_URL + url)
               .then((response) => {
                 contentType = response.headers.get('Content-Type');
                 return response.blob();

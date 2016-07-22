@@ -19,8 +19,15 @@ $(() => {
     photoSwipe = new PhotoSwipe($photoSwipe[0], PhotoSwipeUI_Default, items, {
       index: index,
       captionEl: false,
-      shareEl: false,
       preloaderEl: false,
+      shareButtons: [
+        {
+          id: 'download',
+          label: 'Download',
+          url: '{{raw_image_url}}',
+          download: true
+        }
+      ],
       getThumbBoundsFn() {
         return {
           x: position.left,
