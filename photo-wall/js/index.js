@@ -88,7 +88,7 @@ if (navigator.publishServer) {
             //
 
             var contentType;
-            fetch(url)
+            fetch('/examples/photo-wall' + url)
               .then((response) => {
                 contentType = response.headers.get('Content-Type');
                 return response.blob();
