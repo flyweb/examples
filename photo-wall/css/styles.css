@@ -8,6 +8,10 @@ body {
   padding-bottom: 4rem;
 }
 
+body.zoom {
+  overflow: hidden;
+}
+
 .fixed-bottom {
   position: fixed;
   padding-bottom: .8rem;
