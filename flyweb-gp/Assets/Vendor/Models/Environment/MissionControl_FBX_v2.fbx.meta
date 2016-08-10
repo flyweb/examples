@@ -1,0 +1,121 @@
+fileFormatVersion: 2
+guid: baa50e7a58a72b24eb8ed1e0663a7ae0
+ModelImporter:
+  serializedVersion: 19
+  fileIDToRecycleName:
+    100000: Garage
+    100002: Glass_All
+    100004: LOGO
+    100006: MissionControl
+    100008: MissionControl_Alpha
+    100010: //RootNode
+    400000: Garage
+    400002: Glass_All
+    400004: LOGO
+    400006: MissionControl
+    400008: MissionControl_Alpha
+    400010: //RootNode
+    2300000: Garage
+    2300002: Glass_All
+    2300004: LOGO
+    2300006: MissionControl
+    2300008: MissionControl_Alpha
+    3300000: Garage
+    3300002: Glass_All
+    3300004: LOGO
+    3300006: MissionControl
+    3300008: MissionControl_Alpha
+    4300000: MissionControl_Alpha
+    4300002: Garage
+    4300004: LightPole
+    4300006: MissionControl
+    4300008: Glass_All
+    4300010: ParkingLot
+    4300012: LOGO
+    4300014: GalleryFences
+    4300016: RoadBlock
+    4300018: Guards Inner Rock Slide
+    4300020: Guards Inner Rock Slide ChainLinks
+    4300022: Guards Outer Stretch Base
+    4300024: Guards Outer Stretch Fence Detail
+    4300026: Guards Outer Stretch Pillars
+    4300028: Guards Outer Main
+    4300030: LightBridgeGroup
+    4300032: Lamps
+    4300034: LightBridge_Inner
+    4300036: Wire_Lights
+    4300038: Guards Mission Control Base
+    4300040: Bridge
+    4300042: Road_Assembly
+    4300044: Pit Fence
+    4300046: Guards Outer Main03
+    4300048: Guards Outer Main02
+    4300050: Guards Inner Main02
+    4300052: Guards Inner Main04
+    4300054: Guards Inner Main01
+    4300056: Guards Inner Main03
+    11100000: //RootNode
+  materials:
+    importMaterials: 1
+    materialName: 3
+    materialSearch: 1
+  animations:
+    legacyGenerateAnimations: 4
+    bakeSimulation: 0
+    resampleRotations: 1
+    optimizeGameObjects: 0
+    motionNodeName: 
+    animationImportErrors: 
+    animationImportWarnings: 
+    animationRetargetingWarnings: 
+    animationDoRetargetingWarnings: 0
+    animationCompression: 1
+    animationRotationError: 0.5
+    animationPositionError: 0.5
+    animationScaleError: 0.5
+    animationWrapMode: 0
+    extraExposedTransformPaths: []
+    clipAnimations: []
+    isReadable: 1
+  meshes:
+    lODScreenPercentages: []
+    globalScale: 1
+    meshCompression: 0
+    addColliders: 0
+    importBlendShapes: 1
+    swapUVChannels: 0
+    generateSecondaryUV: 1
+    useFileUnits: 1
+    optimizeMeshForGPU: 1
+    keepQuads: 0
+    weldVertices: 1
+    secondaryUVAngleDistortion: 8
+    secondaryUVAreaDistortion: 15.000001
+    secondaryUVHardAngle: 88
+    secondaryUVPackMargin: 4
+    useFileScale: 0
+  tangentSpace:
+    normalSmoothAngle: 60
+    normalImportMode: 1
+    tangentImportMode: 1
+  importAnimation: 1
+  copyAvatar: 0
+  humanDescription:
+    human: []
+    skeleton: []
+    armTwist: 0.5
+    foreArmTwist: 0.5
+    upperLegTwist: 0.5
+    legTwist: 0.5
+    armStretch: 0.05
+    legStretch: 0.05
+    feetSpacing: 0
+    rootMotionBoneName: 
+    hasTranslationDoF: 0
+  lastHumanDescriptionAvatarSource: {instanceID: 0}
+  animationType: 1
+  humanoidOversampling: 1
+  additionalBone: 0
+  userData: 
+  assetBundleName: 
+  assetBundleVariant: 

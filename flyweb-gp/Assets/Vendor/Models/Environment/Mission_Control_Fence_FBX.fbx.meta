@@ -1,0 +1,90 @@
+fileFormatVersion: 2
+guid: bdca1de6eada3c94ab832786f65958ff
+ModelImporter:
+  serializedVersion: 19
+  fileIDToRecycleName:
+    100000: Mission_Control_Fence
+    100002: Mission_Control_Fence_Base
+    100004: //RootNode
+    100006: Mission_Control_Fence_Poles
+    400000: Mission_Control_Fence
+    400002: Mission_Control_Fence_Base
+    400004: //RootNode
+    400006: Mission_Control_Fence_Poles
+    2300000: Mission_Control_Fence
+    2300002: Mission_Control_Fence_Base
+    2300004: Mission_Control_Fence_Poles
+    3300000: Mission_Control_Fence
+    3300002: Mission_Control_Fence_Base
+    3300004: Mission_Control_Fence_Poles
+    4300000: Mission Control Fence Base
+    4300002: Mission Control Fence
+    4300004: Mission Control Fence poles
+    4300006: Mission_Control_Fence
+    4300008: Mission_Control_Fence_Poles
+    4300010: Mission_Control_Fence_Base
+    11100000: //RootNode
+  materials:
+    importMaterials: 1
+    materialName: 3
+    materialSearch: 1
+  animations:
+    legacyGenerateAnimations: 4
+    bakeSimulation: 0
+    resampleRotations: 1
+    optimizeGameObjects: 0
+    motionNodeName: 
+    animationImportErrors: 
+    animationImportWarnings: 
+    animationRetargetingWarnings: 
+    animationDoRetargetingWarnings: 0
+    animationCompression: 1
+    animationRotationError: 0.5
+    animationPositionError: 0.5
+    animationScaleError: 0.5
+    animationWrapMode: 0
+    extraExposedTransformPaths: []
+    clipAnimations: []
+    isReadable: 1
+  meshes:
+    lODScreenPercentages: []
+    globalScale: 1
+    meshCompression: 0
+    addColliders: 0
+    importBlendShapes: 1
+    swapUVChannels: 0
+    generateSecondaryUV: 0
+    useFileUnits: 1
+    optimizeMeshForGPU: 1
+    keepQuads: 0
+    weldVertices: 1
+    secondaryUVAngleDistortion: 8
+    secondaryUVAreaDistortion: 15.000001
+    secondaryUVHardAngle: 88
+    secondaryUVPackMargin: 4
+    useFileScale: 0
+  tangentSpace:
+    normalSmoothAngle: 60
+    normalImportMode: 0
+    tangentImportMode: 1
+  importAnimation: 1
+  copyAvatar: 0
+  humanDescription:
+    human: []
+    skeleton: []
+    armTwist: 0.5
+    foreArmTwist: 0.5
+    upperLegTwist: 0.5
+    legTwist: 0.5
+    armStretch: 0.05
+    legStretch: 0.05
+    feetSpacing: 0
+    rootMotionBoneName: 
+    hasTranslationDoF: 0
+  lastHumanDescriptionAvatarSource: {instanceID: 0}
+  animationType: 1
+  humanoidOversampling: 1
+  additionalBone: 0
+  userData: 
+  assetBundleName: 
+  assetBundleVariant: 

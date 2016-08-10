@@ -1,0 +1,34 @@
+<!DOCTYPE html>
+<html lang="en-us">
+<head>
+  <meta charset="utf-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+  <title>FlyWeb GP</title>
+  <link rel="stylesheet" href="css/style.css">
+  <link rel="shortcut icon" href="favicon.ico" />
+  <script src="lib/UnityProgress.js"></script>
+</head>
+<body class="template">
+  <div class="template-wrap clear">
+    <canvas class="emscripten" id="canvas" oncontextmenu="event.preventDefault()" height="600" width="960"></canvas>
+    <div class="logo"></div>
+    <div class="fullscreen"><img src="img/fullscreen.png" width="38" height="38" alt="Fullscreen" title="Fullscreen" onclick="SetFullscreen(1);" /></div>
+  </div>
+
+  <script type='text/javascript'>
+  var Module = {
+    TOTAL_MEMORY: 536870912,
+    errorhandler: null,			// arguments: err, url, line. This function must return 'true' if the error is handled, otherwise 'false'
+    compatibilitycheck: null,
+    dataUrl: "Release/Build.data",
+    codeUrl: "Release/Build.js",
+    memUrl: "Release/Build.mem",
+  };
+</script>
+<script src="Release/UnityLoader.js"></script>
+
+
+  <script src="js/server.js"></script>
+</body>
+</html>

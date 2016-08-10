@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="utf-8">
+  <title>FlyWeb GP Controller</title>
+  <meta name="viewport" content="width=device-width, user-scalable=no, initial-scale=1">
+  <link rel="stylesheet" href="css/style.css">
+</head>
+<body>
+  <label for="mode">
+    <input type="checkbox" id="mode">
+    <span id="mode-off">Switch To Joystick</span>
+    <span id="mode-on">Switch To Motion</span>
+  </label>
+
+  <div id="joystick" hidden></div>
+
+  <button type="button" id="forward">ACCEL</button>
+  <button type="button" id="reverse">BRAKE</button>
+
+  <script src="js/button.js"></script>
+  <script src="js/joystick.js"></script>
+  <script src="js/keyboard.js"></script>
+  <script src="js/motion.js"></script>
+  <script src="js/app.js"></script>
+</body>
+</html>

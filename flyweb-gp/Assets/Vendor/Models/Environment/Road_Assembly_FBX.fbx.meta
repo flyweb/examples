@@ -1,0 +1,215 @@
+fileFormatVersion: 2
+guid: a95b4ad9067903d4d8157f9ad18136a6
+ModelImporter:
+  serializedVersion: 19
+  fileIDToRecycleName:
+    100000: Bridge
+    100002: GalleryFences
+    100004: Guards Inner Main01
+    100006: Guards Inner Main02
+    100008: Guards Inner Main03
+    100010: Guards Inner Main04
+    100012: Guards Inner Rock Slide
+    100014: Guards Inner Rock Slide ChainLinks
+    100016: Guards Mission Control Base
+    100018: Guards Outer Main
+    100020: Guards Outer Main02
+    100022: Guards Outer Main03
+    100024: Guards Outer Stretch Base
+    100026: Guards Outer Stretch Fence Detail
+    100028: Guards Outer Stretch Pillars
+    100030: Lamps
+    100032: LightBridge_Inner
+    100034: LightBridgeGroup
+    100036: Pit Fence
+    100038: Road
+    100040: Road01
+    100042: Road02
+    100044: Road02a
+    100046: Road03
+    100048: //RootNode
+    100050: RoadBlock
+    100052: Wire_Lights
+    400000: Bridge
+    400002: GalleryFences
+    400004: Guards Inner Main01
+    400006: Guards Inner Main02
+    400008: Guards Inner Main03
+    400010: Guards Inner Main04
+    400012: Guards Inner Rock Slide
+    400014: Guards Inner Rock Slide ChainLinks
+    400016: Guards Mission Control Base
+    400018: Guards Outer Main
+    400020: Guards Outer Main02
+    400022: Guards Outer Main03
+    400024: Guards Outer Stretch Base
+    400026: Guards Outer Stretch Fence Detail
+    400028: Guards Outer Stretch Pillars
+    400030: Lamps
+    400032: LightBridge_Inner
+    400034: LightBridgeGroup
+    400036: Pit Fence
+    400038: Road
+    400040: Road01
+    400042: Road02
+    400044: Road02a
+    400046: Road03
+    400048: //RootNode
+    400050: RoadBlock
+    400052: Wire_Lights
+    2300000: Bridge
+    2300002: GalleryFences
+    2300004: Guards Inner Main01
+    2300006: Guards Inner Main02
+    2300008: Guards Inner Main03
+    2300010: Guards Inner Main04
+    2300012: Guards Inner Rock Slide
+    2300014: Guards Inner Rock Slide ChainLinks
+    2300016: Guards Mission Control Base
+    2300018: Guards Outer Main
+    2300020: Guards Outer Main02
+    2300022: Guards Outer Main03
+    2300024: Guards Outer Stretch Base
+    2300026: Guards Outer Stretch Fence Detail
+    2300028: Guards Outer Stretch Pillars
+    2300030: Lamps
+    2300032: LightBridge_Inner
+    2300034: LightBridgeGroup
+    2300036: Pit Fence
+    2300038: Road
+    2300040: Road01
+    2300042: Road02
+    2300044: Road02a
+    2300046: Road03
+    2300048: RoadBlock
+    2300050: Wire_Lights
+    2800000: __AssetImporterPreview
+    3300000: Bridge
+    3300002: GalleryFences
+    3300004: Guards Inner Main01
+    3300006: Guards Inner Main02
+    3300008: Guards Inner Main03
+    3300010: Guards Inner Main04
+    3300012: Guards Inner Rock Slide
+    3300014: Guards Inner Rock Slide ChainLinks
+    3300016: Guards Mission Control Base
+    3300018: Guards Outer Main
+    3300020: Guards Outer Main02
+    3300022: Guards Outer Main03
+    3300024: Guards Outer Stretch Base
+    3300026: Guards Outer Stretch Fence Detail
+    3300028: Guards Outer Stretch Pillars
+    3300030: Lamps
+    3300032: LightBridge_Inner
+    3300034: LightBridgeGroup
+    3300036: Pit Fence
+    3300038: Road
+    3300040: Road01
+    3300042: Road02
+    3300044: Road02a
+    3300046: Road03
+    3300048: RoadBlock
+    3300050: Wire_Lights
+    4300000: Road_Assembly
+    4300002: GalleryFences
+    4300004: RoadBlock
+    4300006: Guards Inner Rock Slide
+    4300008: Guards Inner Rock Slide ChainLinks
+    4300010: Guards Outer Stretch Base
+    4300012: Guards Outer Stretch Fence Detail
+    4300014: Guards Outer Stretch Pillars
+    4300016: Guards Outer Main
+    4300018: LightBridgeGroup
+    4300020: Lamps
+    4300022: LightBridge_Inner
+    4300024: Wire_Lights
+    4300026: Guards Mission Control Base
+    4300028: Bridge
+    4300030: Road04
+    4300032: Road03
+    4300034: Road02
+    4300036: Road01
+    4300038: Guards Inner Main
+    4300040: Pit Fence
+    4300042: Guards Outer Main03
+    4300044: Guards Inner Main02
+    4300046: Guards Inner Main03
+    4300048: Guards Inner Main04
+    4300050: Guards Outer Main02
+    4300052: Guards Inner Main05
+    4300054: Guards Inner Main01
+    4300056: Pit Entrance
+    4300058: Road_01
+    4300060: Road_05
+    4300062: Road_03
+    4300064: Road_02
+    4300066: Road_04
+    4300068: Pit_Entrance
+    4300070: ROAD BAKER
+    4300072: Road
+    4300074: Road02a
+    11100000: //RootNode
+  materials:
+    importMaterials: 1
+    materialName: 3
+    materialSearch: 1
+  animations:
+    legacyGenerateAnimations: 4
+    bakeSimulation: 0
+    resampleRotations: 1
+    optimizeGameObjects: 0
+    motionNodeName: 
+    animationImportErrors: 
+    animationImportWarnings: 
+    animationRetargetingWarnings: 
+    animationDoRetargetingWarnings: 0
+    animationCompression: 1
+    animationRotationError: 0.5
+    animationPositionError: 0.5
+    animationScaleError: 0.5
+    animationWrapMode: 0
+    extraExposedTransformPaths: []
+    clipAnimations: []
+    isReadable: 1
+  meshes:
+    lODScreenPercentages: []
+    globalScale: 1
+    meshCompression: 0
+    addColliders: 0
+    importBlendShapes: 1
+    swapUVChannels: 0
+    generateSecondaryUV: 1
+    useFileUnits: 1
+    optimizeMeshForGPU: 1
+    keepQuads: 0
+    weldVertices: 1
+    secondaryUVAngleDistortion: 8
+    secondaryUVAreaDistortion: 15.000001
+    secondaryUVHardAngle: 88
+    secondaryUVPackMargin: 4
+    useFileScale: 0
+  tangentSpace:
+    normalSmoothAngle: 60
+    normalImportMode: 1
+    tangentImportMode: 1
+  importAnimation: 1
+  copyAvatar: 0
+  humanDescription:
+    human: []
+    skeleton: []
+    armTwist: 0.5
+    foreArmTwist: 0.5
+    upperLegTwist: 0.5
+    legTwist: 0.5
+    armStretch: 0.05
+    legStretch: 0.05
+    feetSpacing: 0
+    rootMotionBoneName: 
+    hasTranslationDoF: 0
+  lastHumanDescriptionAvatarSource: {instanceID: 0}
+  animationType: 1
+  humanoidOversampling: 1
+  additionalBone: 0
+  userData: 
+  assetBundleName: 
+  assetBundleVariant: 
