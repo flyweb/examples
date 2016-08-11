@@ -1,3 +1,21 @@
+const BASE_URL = this.location.pathname.substring(0, this.location.pathname.lastIndexOf('/'));
+
+if ('serviceWorker' in navigator) {
+  navigator.serviceWorker.register(BASE_URL + '/sw.js', { scope: BASE_URL + '/' })
+    .then((registration) => {
+      if (registration.installing) {
+        console.log('Service Worker installing');
+      } else if (registration.waiting) {
+        console.log('Service Worker installed');
+      } else if (registration.active) {
+        console.log('Service Worker active');
+      }
+    })
+    .catch((error) => {
+      console.error(error);
+    });
+}
+
 $(() => {
   var $fileInput = $('#file-input');
   $fileInput.on('change', (evt) => {
@@ -7,8 +25,6 @@ $(() => {
     });
   });
 });
-
-const BASE_URL = window.location.pathname.substring(0, window.location.pathname.length - 1);
 
 if (navigator.publishServer) {
   navigator.publishServer('Photo Wall')
