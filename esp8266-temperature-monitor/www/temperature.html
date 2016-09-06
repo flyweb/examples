@@ -1,0 +1,68 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+  <title>FlyWeb Temperature Monitor</title>
+  <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+  <header>
+    <img src="flyweb.svg">
+    <h1>FlyWeb Temperature Monitor</h1>
+  </header>
+  <section>
+    <h5>Temperature: <span id="temperature">??.?</span>&deg;F</h5>
+    <canvas id="canvas"></canvas>
+  </section>
+  <script src="smoothie.min.js"></script>
+  <script>
+    var timeSeries = new TimeSeries();
+    var chart = new SmoothieChart({
+      minValueScale: 1.1,
+      maxValueScale: 1.1,
+      millisPerPixel: 100,
+      timestampFormatter: SmoothieChart.timeFormatter,
+      grid: {
+        millisPerLine: 10000,
+        verticalSections: 4
+      }
+    });
+
+    chart.addTimeSeries(timeSeries, {
+      strokeStyle: 'rgba(0, 255, 0, 1)',
+      fillStyle: 'rgba(0, 255, 0, 0.2)',
+      lineWidth: 4
+    });
+
+    updateCanvasSize();
+    updateTemperature();
+
+    chart.streamTo(canvas, 1000);
+
+    window.addEventListener('resize', updateCanvasSize);
+
+    function updateCanvasSize() {
+      canvas.width  = window.innerWidth - 40;
+      canvas.height = Math.max(window.innerHeight - 140, 100);
+    }
+
+    function updateTemperature() {
+      fetch('/temperature')
+        .then(function(response) {
+          return response.json();
+        })
+        .then(function(json) {
+          temperature.textContent = json.value;
+          timeSeries.append(Date.now(), json.value);
+
+          setTimeout(updateTemperature, 1000);
+        })
+        .catch(function() {
+          setTimeout(updateTemperature, 1000);
+        });
+    }
+  </script>
+</body>
+</html>

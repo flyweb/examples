@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+  <title>FlyWeb Temperature Monitor</title>
+  <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+  <header>
+    <img src="flyweb.svg">
+    <h1>FlyWeb Temperature Monitor</h1>
+  </header>
+  <section>
+    <h5 id="message">Settings saved! Now restarting...</h5>
+    <progress id="progress" value="0">
+  </section>
+  <script>
+    var interval = setInterval(function() {
+      progress.value += 0.01;
+      if (progress.value >= 1) {
+        clearInterval(interval);
+        progress.parentNode.removeChild(progress);
+        message.textContent = 'You may now close this tab and re-connect to your regular WiFi network';
+      }
+    }, 200);
+  </script>
+</body>
+</html>

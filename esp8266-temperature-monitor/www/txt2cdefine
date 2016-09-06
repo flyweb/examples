@@ -1,0 +1,58 @@
+#!/usr/bin/env node
+
+var HANDLEBARS_REGEXP = /{{\s*(.+)\s*}}/g;
+
+var inputFile  = process.argv[2];
+var outputFile = process.argv[3];
+var macroName  = process.argv[4];
+
+if (!inputFile || !outputFile) {
+  console.log('Usage: txt2cdefine <input_file> <output_file> [macro_name]\n');
+  return;
+}
+
+var fs = require('fs');
+var path = require('path');
+
+macroName = (macroName || path.basename(outputFile, path.extname(outputFile))).toUpperCase();
+
+fs.readFile(inputFile, 'utf8', function(error, inputText) {
+  if (error) {
+    console.log('ERROR: Invalid input file\n');
+    return;
+  }
+
+  var args = getUniqueMatches(inputText, HANDLEBARS_REGEXP);
+
+  var inputLines  = inputText.replace(/\r/g, '').replace(/\"/g, '\\"').split('\n');
+  var outputLines = [ '#define ' + macroName + '(' + args.join(',') + ') ""\\' ];
+
+  var inputLineCount = inputLines.length;
+  inputLines.forEach(function(inputLine, index) {
+    inputLine = inputLine.replace(HANDLEBARS_REGEXP, function(match, arg) {
+      return '" + ' + arg + ' + "';
+    });
+    outputLines.push('"' + inputLine + (index < inputLineCount - 1 ? '\\n"\\' : '"'));
+  });
+
+  var outputText = outputLines.join('\n');
+
+  fs.writeFile(outputFile, outputText, function(error) {
+    if (error) {
+      throw error;
+    }
+  });
+});
+
+function getUniqueMatches(string, regexp, index = 1) {
+  var matches = [];
+
+  var match;
+  while (match = regexp.exec(string)) {
+    if (matches.indexOf(match[index]) === -1) {
+      matches.push(match[index]);
+    }
+  }
+
+  return matches;
+}

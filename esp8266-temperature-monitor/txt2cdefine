@@ -1,0 +1,79 @@
+#!/usr/bin/env node
+
+/**
+ * txt2cdefine: Encode multiline text files into C/C++ #define directives
+ * https://gist.github.com/justindarc/efee6d3d09341618da5af6a58dfd7b69
+ *
+ * Node.js-based command-line utility for encoding HTML, JS, CSS and other
+ * text files into C/C++ #define directives. Useful for embedded hardware
+ * applications such as Arduino or ESP8266 where no file system is available
+ * for reading external files. The resulting output can saved as a ".h"
+ * header file and included in a C/C++ source file.
+ *
+ *   Usage: txt2cdefine <input_file> <output_file> [macro_name]
+ * 
+ * input_file:  Relative or absolute path to the text file to be encoded
+ *              (e.g. "./index.html")
+ * output_file: Relative or absolute path to the C/C++ header file to be
+ *              written (e.g. "./index_html.h")
+ * macro_name:  Name of the C/C++ macro to be generated in the C/C++ header
+ *              file. If omitted, this name will be inferred from the
+ *              `output_file` name (e.g. "index_html.h" -> INDEX_HTML())
+ */
+
+var HANDLEBARS_REGEXP = /{{\s*(.+)\s*}}/g;
+
+var inputFile  = process.argv[2];
+var outputFile = process.argv[3];
+var macroName  = process.argv[4];
+
+if (!inputFile || !outputFile) {
+  console.log('Usage: txt2cdefine <input_file> <output_file> [macro_name]\n');
+  return;
+}
+
+var fs = require('fs');
+var path = require('path');
+
+macroName = (macroName || path.basename(outputFile, path.extname(outputFile))).toUpperCase();
+
+fs.readFile(inputFile, 'utf8', function(error, inputText) {
+  if (error) {
+    console.log('ERROR: Invalid input file\n');
+    return;
+  }
+
+  var args = getUniqueMatches(inputText, HANDLEBARS_REGEXP);
+
+  var inputLines  = inputText.replace(/\r/g, '').replace(/\"/g, '\\"').split('\n');
+  var outputLines = [ '#define ' + macroName + '(' + args.join(',') + ') ""\\' ];
+
+  var inputLineCount = inputLines.length;
+  inputLines.forEach(function(inputLine, index) {
+    inputLine = inputLine.replace(HANDLEBARS_REGEXP, function(match, arg) {
+      return '" + ' + arg + ' + "';
+    });
+    outputLines.push('"' + inputLine + (index < inputLineCount - 1 ? '\\n"\\' : '"'));
+  });
+
+  var outputText = outputLines.join('\n');
+
+  fs.writeFile(outputFile, outputText, function(error) {
+    if (error) {
+      throw error;
+    }
+  });
+});
+
+function getUniqueMatches(string, regexp, index = 1) {
+  var matches = [];
+
+  var match;
+  while (match = regexp.exec(string)) {
+    if (matches.indexOf(match[index]) === -1) {
+      matches.push(match[index]);
+    }
+  }
+
+  return matches;
+}
