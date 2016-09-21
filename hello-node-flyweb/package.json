@@ -1,0 +1,17 @@
+{
+  "name": "hello-node-flyweb",
+  "version": "1.0.0",
+  "description": "A simple example of a FlyWeb service in Node.js",
+  "main": "index.js",
+  "scripts": {
+    "start": "node index.js"
+  },
+  "keywords": [
+    "flyweb"
+  ],
+  "author": "Justin D'Arcangelo <justindarc@gmail.com>",
+  "license": "MPL-2.0",
+  "dependencies": {
+    "mdns": "^2.3.3"
+  }
+}
