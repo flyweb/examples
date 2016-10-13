@@ -1,0 +1,13 @@
+
+#main-surface {
+  border: 0;
+  margin: 0;
+  position: absolute;
+  left: 0px;
+  right: 0px;
+}
+
+body {
+  border: 0;
+  margin: 0;
+}
