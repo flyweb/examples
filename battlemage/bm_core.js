@@ -90,12 +90,6 @@ class Spell
   get pattern() { return this.pattern_; }
 }
 
-const VecOps = {
-  mag(x, y) {
-    return Math.sqrt(x*x + y*y);
-  }
-};
-
 class Point
 {
   constructor(pt) {
@@ -422,20 +416,7 @@ class Deck
     });
 
     // Randomize the list.
-    let len = cardList.length;
-    for (let i = 0; i < cardList.length - 1; i++) {
-      let elem = cardList[i];
-
-      // Calculate swap index.
-      let fromIdx = i + 1;
-      let span = len - fromIdx;
-      let r = (Math.random() * span)|0;
-
-      // Swap.
-      cardList[i] = cardList[r];
-      cardList[r] = elem;
-    }
-
+    ArrayOps.randomize(cardList);
     this.shuffledCards_ = cardList;
   }
 
