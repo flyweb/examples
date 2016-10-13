@@ -32,6 +32,11 @@ class ScreenArea
     return new Point({x: ( x * this.width_) + this.x_,
                       y: ( y * this.width_) + this.y_});
   }
+
+  containsPoint({x, y}) {
+    return ((x >= this.x_) && (x < this.x_ + this.width_)) &&
+           ((y >= this.y_) && (y < this.y_ + this.height_));
+  }
 }
 
 class EventHelper

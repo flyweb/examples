@@ -205,9 +205,12 @@ class GameScreen
   }
 
   _onMouseDown(event) {
-    this.mousePath_ = new TracePattern();
-    this.mousePath_.addXY(event.offsetX, event.offsetY);
+    /** If the start is within the draw area, start a trace. */
+    if (this.castArea_.containsPoint({x:event.offsetX, y:event.offsetY})) {
+      this.mousePath_ = new TracePattern();
+      this.mousePath_.addXY(event.offsetX, event.offsetY);
       this._handleTraceStart(this.mousePath_);
+    }
   }
   _onMouseMove(event) {
     if (this.mousePath_) {
@@ -224,9 +227,12 @@ class GameScreen
   }
 
   _onTouchStart(event) {
-    this.touchPath_ = new TracePattern();
-    this.touchPath_.addXY(event.touches[0].clientX, event.touches[0].clientY);
-    this._handleTraceStart(this.touchPath_);
+    /** If the start is within the draw area, start a trace. */
+    if (this.castArea_.containsPoint({x:event.clientX, y:event.clientY})) {
+      this.touchPath_ = new TracePattern();
+      this.touchPath_.addXY(event.touches[0].clientX, event.touches[0].clientY);
+      this._handleTraceStart(this.touchPath_);
+    }
   }
   _onTouchMove(event) {
     if (this.touchPath_) {
