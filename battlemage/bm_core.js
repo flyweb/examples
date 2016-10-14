@@ -279,10 +279,8 @@ class TracePattern
       if (thisIdx == thisNumPoints - 1) {
         // ASSERT: otherIdx < otherNumPoints - 1
         let thirdPoint = otherPattern.pointAt(++otherIdx);
-        // let areaDelta = Point.triangleArea(thisPoint, otherPoint, thirdPoint);
         let dist = thisPoint.distanceTo(thirdPoint);
         if (callback) {
-          // callback([thisPoint, otherPoint, thirdPoint], areaDelta);
           callback([thisPoint, thirdPoint], dist);
         }
         // areaSum += areaDelta dist;
@@ -293,10 +291,8 @@ class TracePattern
       if (otherIdx == otherNumPoints - 1) {
         // ASSERT: thisIdx < thisNumPoints - 1
         let thirdPoint = this.pointAt(++thisIdx);
-        // let areaDelta = Point.triangleArea(thisPoint, otherPoint, thirdPoint);
         let dist = thirdPoint.distanceTo(otherPoint);
         if (callback) {
-          // callback([thisPoint, otherPoint, thirdPoint], areaDelta);
           callback([thirdPoint, otherPoint], dist);
         }
         // areaSum += areaDelta;
@@ -313,42 +309,26 @@ class TracePattern
       let min = Math.min(advanceOther, advanceThis, advanceBoth);
       if (min === advanceOther) {
         otherIdx++;
-        // let areaDelta = Point.triangleArea(thisPoint, otherPoint,
-        //                                    nextOtherPoint);
         let dist = thisPoint.distanceTo(nextOtherPoint);
         if (callback) {
-          // callback([thisPoint, otherPoint, nextOtherPoint], areaDelta);
           callback([thisPoint, nextOtherPoint], dist);
         }
-        // areaSum += areaDelta;
         areaSum += dist;
       } else if (min === advanceThis) {
         thisIdx++;
-        // let areaDelta = Point.triangleArea(thisPoint, otherPoint,
-        //                                 nextThisPoint);
         let dist = nextThisPoint.distanceTo(otherPoint);
         if (callback) {
-          // callback([thisPoint, otherPoint, nextThisPoint], areaDelta);
           callback([nextThisPoint, otherPoint], dist);
         }
-        // areaSum += areaDelta;
         areaSum += dist;
       } else {
         // ASSERT: min == advanceBoth
         otherIdx++;
         thisIdx++;
-        // let areaDelta1 = Point.triangleArea(thisPoint, otherPoint,
-        //                                  nextThisPoint);
-        // let areaDelta2 = Point.triangleArea(nextThisPoint, otherPoint,
-        //                                  nextOtherPoint);
         let dist = nextThisPoint.distanceTo(nextOtherPoint);
         if (callback) {
-          // callback([thisPoint, otherPoint, nextThisPoint], areaDelta1);
-          // callback([nextThisPoint, otherPoint, nextOtherPoint], areaDelta2);
           callback([nextThisPoint, nextOtherPoint], dist);
         }
-        // areaSum += areaDelta1;
-        // areaSum += areaDelta2;
         areaSum += dist;
       }
     }
