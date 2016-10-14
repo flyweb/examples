@@ -184,8 +184,12 @@ class SpellPattern
   traceScore(normalizedTracePattern, callback) {
     return this.normalizedTrace_.traceScore(normalizedTracePattern, callback);
   }
+
+  /** The default sample interval. */
+  static get SAMPLE_INTERVAL() {
+    return 0.01;
+  }
 }
-SpellPattern.SAMPLE_INTERVAL = 0.01;
 
 /**
  * A trace pattern is a collection of points that identify the trace that
@@ -419,7 +423,7 @@ class Deck
 class Hand
 {
   constructor() {
-    this.size_ = Hand.DefaultHandSize;
+    this.size_ = Hand.DEFAULT_HAND_SIZE;
     this.cards_ = new Array(this.size_);
     this.eventHelper_ = new EventHelper();
   }
@@ -476,6 +480,8 @@ class Hand
   removeEventListener(type, callback) {
     this.eventHelper_.removeEventListener(type, callback);
   }
-};
 
-Hand.DefaultHandSize = 5;
+  static get DEFAULT_HAND_SIZE() {
+    return 5;
+  }
+};
