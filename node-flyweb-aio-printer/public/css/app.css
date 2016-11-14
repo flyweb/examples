@@ -1,0 +1,4 @@
+#preview-canvas {
+  width: calc(72.634vmin - 100px);
+  height: calc(100vmin - 100px);
+}
