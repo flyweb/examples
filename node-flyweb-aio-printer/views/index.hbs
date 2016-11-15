@@ -1,3 +1,74 @@
-<canvas id="preview-canvas"></canvas>
-<button id="preview-button">Preview</button>
-<button id="scan-button">Scan</button>
+<div class="navbar navbar-default">
+  <div class="container-fluid">
+    <div class="navbar-header">
+      <button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".navbar-responsive-collapse">
+        <span class="icon-bar"></span>
+        <span class="icon-bar"></span>
+        <span class="icon-bar"></span>
+      </button>
+      <span class="navbar-brand">FlyWeb AIO</span>
+    </div>
+    <div class="navbar-collapse collapse navbar-responsive-collapse">
+      <ul class="nav navbar-nav">
+        <li class="active">
+          <a href="#printer" data-toggle="tab">Printer</a>
+        </li>
+        <li>
+          <a href="#scanner" data-toggle="tab">Scanner</a>
+        </li>
+      </ul>
+    </div>
+  </div>
+</div>
+
+<div class="tab-content">
+  <div id="printer" class="tab-pane fade active in">
+    <h1>Printer stuff goes here</h1>
+  </div>
+
+  <div id="scanner" class="tab-pane fade">
+    <canvas id="preview-canvas"></canvas>
+
+    <button type="button" id="preview-button" class="btn btn-primary" data-toggle="modal" data-target="#preview-modal">Preview</button>
+    <button type="button" id="scan-button" class="btn btn-primary" data-toggle="modal" data-target="#scan-modal">Scan</button>
+
+    <!-- Preview modal -->
+    <div id="preview-modal" class="modal fade">
+      <div class="modal-dialog">
+        <div class="modal-content">
+          <div class="modal-header">
+            <h4 class="modal-title">Previewing</h4>
+          </div>
+          <div class="modal-body">
+            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 66 66" class="md-spinner">
+              <circle cx="33" cy="33" r="30"></circle>
+            </svg>
+          </div>
+          <div class="modal-footer">
+            <button type="button" id="preview-cancel-button" class="btn btn-primary" data-dismiss="modal">Cancel</button>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- Scan modal -->
+    <div id="scan-modal" class="modal fade">
+      <div class="modal-dialog">
+        <div class="modal-content">
+          <div class="modal-header">
+            <h4 class="modal-title">Scanning</h4>
+          </div>
+          <div class="modal-body">
+            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 66 66" class="md-spinner">
+              <circle cx="33" cy="33" r="30"></circle>
+            </svg>
+          </div>
+          <div class="modal-footer">
+            <button type="button" id="scan-cancel-button" class="btn btn-primary" data-dismiss="modal">Cancel</button>
+          </div>
+        </div>
+      </div>
+    </div>
+
+  </div>
+</div>

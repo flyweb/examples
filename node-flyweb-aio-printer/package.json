@@ -13,10 +13,13 @@
   "license": "MPL-2.0",
   "dependencies": {
     "body-parser": "^1.15.2",
+    "bootstrap": "^3.3.7",
+    "bootstrap-material-design": "^0.5.10",
     "cookie-parser": "^1.4.3",
     "express": "^4.14.0",
     "fabric": "^1.6.7",
     "hbs": "^4.0.1",
+    "jquery": "^3.1.1",
     "material-design-icons": "^3.0.1",
     "mdns": "^2.3.3",
     "morgan": "^1.7.0",

@@ -1,4 +1,18 @@
 #preview-canvas {
+  background-color: #fff;
   width: calc(72.634vmin - 100px);
   height: calc(100vmin - 100px);
+}
+
+.btn:focus,
+.btn:active:focus,
+.btn.active:focus,
+.btn.focus,
+.btn:active.focus,
+.btn.active.focus {
+  outline: none;
+}
+
+.tab-content {
+  margin: 0 1.6rem;
 }

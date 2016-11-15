@@ -1,10 +1,12 @@
-document.addEventListener('DOMContentLoaded', function() {
+$(function() {
+  $.material.init();
+
   const SCAN_AREA_WIDTH_MM = 215.9;
   const SCAN_AREA_HEIGHT_MM = 297.011;
   const PREVIEW_ASPECT_RATIO = SCAN_AREA_WIDTH_MM / SCAN_AREA_HEIGHT_MM;
 
-  var canvas = new fabric.Canvas('preview-canvas');
-  var image = new fabric.Image();
+  var previewCanvas = new fabric.Canvas('preview-canvas');
+  var previewImage = new fabric.Image();
 
   var selection = new fabric.Rect({
     fill: 'rgba(255,255,255,.75)',
@@ -20,66 +22,106 @@ document.addEventListener('DOMContentLoaded', function() {
     height: 50
   });
 
-  canvas.add(selection);
-  canvas.setBackgroundImage(image);
+  previewCanvas.add(selection);
+  previewCanvas.setBackgroundImage(previewImage);
 
-  canvas.observe('object:scaling', function(evt) {
+  previewCanvas.observe('object:scaling', function(evt) {
     var obj = evt.target;
-    if (obj.scaleX * obj.width  >= canvas.width) {
-      obj.setScaleX(canvas.width / obj.width);
+    if (obj.scaleX * obj.width  >= previewCanvas.width) {
+      obj.setScaleX(previewCanvas.width / obj.width);
     }
 
-    if (obj.scaleY * obj.height >= canvas.height) {
-      obj.setScaleY(canvas.height / obj.height);
+    if (obj.scaleY * obj.height >= previewCanvas.height) {
+      obj.setScaleY(previewCanvas.height / obj.height);
     }
 
     constrainObjectInBounds(obj);
   });
 
-  canvas.observe('object:moving', function(evt) {
+  previewCanvas.observe('object:moving', function(evt) {
     var obj = evt.target;
-    if (obj.height > canvas.height ||
-        obj.width  > canvas.width) {
+    if (obj.height > previewCanvas.height ||
+        obj.width  > previewCanvas.width) {
       return;
     }
 
     constrainObjectInBounds(obj);
   });
 
-  updateCanvasDimensions();
+  var isPreviewCancelled = false;
 
-  var scanButton = document.getElementById('scan-button');
-  scanButton.addEventListener('click', function() {
-    var pctLeft   = selection.left   / canvas.width;
-    var pctTop    = selection.top    / canvas.height;
-    var pctWidth  = selection.scaleX * selection.width  / canvas.width;
-    var pctHeight = selection.scaleY * selection.height / canvas.height;
+  $('#preview-button').on('click', function() {
+    isPreviewCancelled = false;
+
+    var img = new Image();
+    img.onload = function() {
+      if (isPreviewCancelled) {
+        return;
+      }
+
+      previewImage.setSrc(img.src, previewCanvas.renderAll.bind(previewCanvas), {
+        width:  previewCanvas.width,
+        height: previewCanvas.height
+      });
+
+      $('#preview-modal').modal('hide');
+    };
+    img.onerror = function() {
+      $('#preview-modal').modal('hide');
+      $.snackbar({ content: 'An error occurred while acquiring the preview' });
+    };
+
+    img.src = '/api/scanner/preview?d=' + Date.now();
+  });
+
+  $('#preview-cancel-button').on('click', function() {
+    isPreviewCancelled = true;
+  });
+
+  var isScanCancelled = false;
+
+  $('#scan-button').on('click', function() {
+    isScanCancelled = false;
+
+    var pctLeft   = selection.left   / previewCanvas.width;
+    var pctTop    = selection.top    / previewCanvas.height;
+    var pctWidth  = selection.scaleX * selection.width  / previewCanvas.width;
+    var pctHeight = selection.scaleY * selection.height / previewCanvas.height;
     
     var mmLeft   = pctLeft   * SCAN_AREA_WIDTH_MM;
     var mmTop    = pctTop    * SCAN_AREA_HEIGHT_MM;
     var mmWidth  = pctWidth  * SCAN_AREA_WIDTH_MM;
     var mmHeight = pctHeight * SCAN_AREA_HEIGHT_MM;
 
-    var link = document.createElement('a');
-    link.href = '/api/scanner/scan?l=' + mmLeft + '&t=' + mmTop + '&x=' + mmWidth + '&y=' + mmHeight + '&d=' + Date.now();
-    link.download = 'Scan.jpg';
-    document.body.appendChild(link);
-    link.click();
+    var img = new Image();
+    img.onload = function() {
+      if (isScanCancelled) {
+        return;
+      }
 
-    setTimeout(function() {
-      document.body.removeChild(link);
-    });
+      var $link = $('<a href="' + img.src + '" download="Scan.jpg"/>');
+      $link.appendTo(document.body)[0].click();
+
+      $('#scan-modal').modal('hide');
+
+      setTimeout(function() {
+        $link.remove();
+      });
+    };
+    img.onerror = function() {
+      $('#scan-modal').modal('hide');
+      $.snackbar({ content: 'An error occurred while scanning' });
+    };
+
+    img.src = '/api/scanner/scan?l=' + mmLeft + '&t=' + mmTop + '&x=' + mmWidth + '&y=' + mmHeight + '&d=' + Date.now();
   });
 
-  var previewButton = document.getElementById('preview-button');
-  previewButton.addEventListener('click', function() {
-    image.setSrc('/api/scanner/preview?d=' + Date.now(), canvas.renderAll.bind(canvas), {
-      width:  canvas.width,
-      height: canvas.height
-    });
+  $('#scan-cancel-button').on('click', function() {
+    isScanCancelled = true;
   });
 
-  window.addEventListener('resize', updateCanvasDimensions);
+  $(window).on('resize', updateCanvasDimensions);
+  updateCanvasDimensions();
 
   function constrainObjectInBounds(obj) {
     obj.setCoords();
@@ -100,13 +142,13 @@ document.addEventListener('DOMContentLoaded', function() {
   function updateCanvasDimensions() {
     var viewportMin = Math.min(window.innerWidth, window.innerHeight);
 
-    var height = viewportMin - 100;
+    var height = viewportMin - 128;
     var width  = height * PREVIEW_ASPECT_RATIO;
 
-    canvas.setHeight(height);
-    canvas.setWidth(width);
-    image.set('height', height);
-    image.set('width', width);
+    previewCanvas.setHeight(height);
+    previewCanvas.setWidth(width);
+    previewImage.set('height', height);
+    previewImage.set('width', width);
   }
 });
 
