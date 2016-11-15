@@ -99,14 +99,25 @@ $(function() {
         return;
       }
 
-      var $link = $('<a href="' + img.src + '" download="Scan.jpg"/>');
-      $link.appendTo(document.body)[0].click();
+      var canvas = document.createElement('canvas');
+      canvas.width  = img.width;
+      canvas.height = img.height;
 
-      $('#scan-modal').modal('hide');
+      var ctx = canvas.getContext('2d');
+      ctx.drawImage(img, 0, 0);
 
-      setTimeout(function() {
-        $link.remove();
-      });
+      canvas.toBlob(function(blob) {
+        var url = URL.createObjectURL(blob);
+        var $link = $('<a href="' + url + '" download="Scan.jpg"/>');
+        
+        $link.appendTo(document.body)[0].click();
+
+        $('#scan-modal').modal('hide');
+
+        setTimeout(function() {
+          $link.remove();
+        });
+      }, 'image/jpeg');
     };
     img.onerror = function() {
       $('#scan-modal').modal('hide');
