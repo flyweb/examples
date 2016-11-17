@@ -12,6 +12,22 @@ router.get('/', function(req, res, next) {
   });
 });
 
+router.get('/api/printer/supplies', function(req, res, next) {
+  var ink = spawn('ink', ['-p', 'usb']);
+  ink.stdout.on('data', function(data) {
+    var lines = data.toString().trim().split('\n').slice(4);
+    var levels = {};
+    lines.forEach(function(line) {
+      var parts = line.split(':');
+      var key = parts[0].toLowerCase();
+      var value = parseInt(parts[1], 10);
+      levels[key] = value;
+    })
+
+    res.json(levels);
+  });
+});
+
 router.get('/api/scanner/preview', function(req, res, next) {
   var params = {
     mode: 'Color',

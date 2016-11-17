@@ -1,7 +1,7 @@
 {
   "name": "node-flyweb-aio-printer",
   "version": "1.0.0",
-  "description": "A FlyWeb user interface for controlling an all-in-one printer",
+  "description": "A FlyWeb user interface for controlling an all-in-one printer/scanner",
   "main": "index.js",
   "scripts": {
     "start": "node ./bin/www"
