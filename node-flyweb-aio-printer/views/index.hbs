@@ -23,7 +23,21 @@
 
 <div class="tab-content">
   <div id="printer" class="tab-pane fade active in">
-    <h1>Printer stuff goes here</h1>
+    <h3>Supply Levels</h3>
+
+    <div id="supply-levels" class="clearfix"></div>
+
+    <h3>Send To Printer</h3>
+
+    <span class="btn btn-primary fileinput-button">
+      Select File
+      <i class="material-icons">folder_open</i>
+      <input type="file" id="print-file" name="file">
+    </span>
+
+    <div id="upload-progress" class="progress progress-striped active fade">
+      <div class="progress-bar"></div>
+    </div>
   </div>
 
   <div id="scanner" class="tab-pane fade">

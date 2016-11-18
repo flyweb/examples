@@ -4,6 +4,10 @@ $(function() {
   const SCAN_AREA_WIDTH_MM = 215.9;
   const SCAN_AREA_HEIGHT_MM = 297.011;
   const PREVIEW_ASPECT_RATIO = SCAN_AREA_WIDTH_MM / SCAN_AREA_HEIGHT_MM;
+  
+  const LOW_SUPPLY_THRESHOLD = 20;
+
+  const SUPPLY_STORE_BASE_URL = 'https://h22203.www2.hp.com/SureSupply/?searchTerm=';
 
   var previewCanvas = new fabric.Canvas('preview-canvas');
   var previewImage = new fabric.Image();
@@ -131,8 +135,62 @@ $(function() {
     isScanCancelled = true;
   });
 
+  $('#print-file').fileupload({
+    url: '/api/printer/print',
+    dataType: 'json',
+
+    submit: function(evt, data) {
+      $('#upload-progress')
+        .addClass('in')
+        .children('.progress-bar')
+        .css('width', '0');
+    },
+
+    done: function(evt, data) {
+
+    },
+
+    fail: function(evt, data) {
+
+    },
+
+    always: function(evt, data) {
+      $('#upload-progress').removeClass('in');
+    },
+
+    progressall: function(evt, data) {
+      var progress = parseInt(data.loaded / data.total * 100, 10);
+      $('#upload-progress > .progress-bar').css('width', progress + '%');
+    }
+  });
+
   $(window).on('resize', updateCanvasDimensions);
   updateCanvasDimensions();
+
+  $.getJSON('/api/printer/supplies', function(data) {
+    var $supplyLevels = $('#supply-levels').empty();
+
+    $.each(data, function(color, value) {
+      $supplyLevels.append(
+        '<h5>' +
+          capitalizeString(color) +
+          '<span class="pull-right">' +
+            (value <= LOW_SUPPLY_THRESHOLD ? '<i class="material-icons">warning</i>' : '') +
+            value + '%' +
+          '</span>' +
+        '</h5>' +
+        '<div class="progress">' +
+          '<div class="progress-bar" style="background-color: ' + color + '; width: ' + value + '%;"></div>' +
+        '</div>');
+    });
+
+    $.getJSON('/api/printer/model', function(data) {
+      $supplyLevels.append(
+          '<a class="btn btn-primary pull-right" href="' + SUPPLY_STORE_BASE_URL + data.model + '" target="_blank">' +
+            'Order Supplies <i class="material-icons">launch</i>' +
+          '</a>');
+    });
+  });
 
   function constrainObjectInBounds(obj) {
     obj.setCoords();
@@ -160,6 +218,10 @@ $(function() {
     previewCanvas.setWidth(width);
     previewImage.set('height', height);
     previewImage.set('width', width);
+  }
+
+  function capitalizeString(str) {
+    return str.charAt(0).toUpperCase() + str.slice(1);
   }
 });
 

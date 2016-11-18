@@ -13,6 +13,12 @@
   outline: none;
 }
 
+.material-icons {
+  line-height: 1.4rem;
+  margin-top: -.1rem;
+  vertical-align: middle;
+}
+
 .tab-content {
   margin: 0 1.6rem;
 }

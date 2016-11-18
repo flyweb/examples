@@ -12,6 +12,16 @@ router.get('/', function(req, res, next) {
   });
 });
 
+router.get('/api/printer/model', function(req, res, next) {
+  var ink = spawn('ink', ['-p', 'usb']);
+  ink.stdout.on('data', function(data) {
+    var lines = data.toString().trim().split('\n').slice(2);
+    var model = lines[0].split('-')[0];
+
+    res.json({ model: model });
+  });
+});
+
 router.get('/api/printer/supplies', function(req, res, next) {
   var ink = spawn('ink', ['-p', 'usb']);
   ink.stdout.on('data', function(data) {
