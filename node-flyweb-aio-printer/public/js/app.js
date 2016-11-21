@@ -186,7 +186,7 @@ $(function() {
 
     $.getJSON('/api/printer/model', function(data) {
       $supplyLevels.append(
-          '<a class="btn btn-primary pull-right" href="' + SUPPLY_STORE_BASE_URL + data.model + '" target="_blank">' +
+          '<a class="btn btn-primary" href="' + SUPPLY_STORE_BASE_URL + data.model + '" target="_blank">' +
             'Order Supplies <i class="material-icons">launch</i>' +
           '</a>');
     });
@@ -209,10 +209,17 @@ $(function() {
   }
 
   function updateCanvasDimensions() {
-    var viewportMin = Math.min(window.innerWidth, window.innerHeight);
+    var windowWidth  = window.innerWidth - 32;
+    var windowHeight = window.innerHeight - 168;
+    
+    var scaleX1 = windowWidth;
+    var scaleY1 = windowWidth / PREVIEW_ASPECT_RATIO;
 
-    var height = viewportMin - 128;
-    var width  = height * PREVIEW_ASPECT_RATIO;
+    var scaleX2 = windowHeight * PREVIEW_ASPECT_RATIO;
+    var scaleY2 = windowHeight;
+
+    var width  = scaleY1 > windowHeight ? scaleX2 : scaleX1;
+    var height = scaleY1 > windowHeight ? scaleY2 : scaleY1;
 
     previewCanvas.setHeight(height);
     previewCanvas.setWidth(width);
