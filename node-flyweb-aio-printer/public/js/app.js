@@ -139,6 +139,35 @@ $(function() {
     url: '/api/printer/print',
     dataType: 'json',
 
+    add: function(evt, data) {
+      $('#print-modal').modal('show');
+
+      $('#print-cancel-button').on('click', onCancel);
+      $('#print-print-button').on('click', onPrint);
+
+      function onCancel() {
+        cleanup();
+
+        while (data.files.length > 0) {
+          data.files.pop();
+        }
+
+        data.abort();
+      }
+
+      function onPrint() {
+        cleanup();
+
+        data.formData = new FormData($('#print-form')[0]);
+        data.submit();
+      }
+
+      function cleanup() {
+        $('#print-cancel-button').off('click', onCancel);
+        $('#print-print-button').off('click', onPrint);
+      }
+    },
+
     submit: function(evt, data) {
       $('#upload-progress')
         .addClass('in')
@@ -147,11 +176,11 @@ $(function() {
     },
 
     done: function(evt, data) {
-
+      $.snackbar({ content: 'Printing started successfully' });
     },
 
     fail: function(evt, data) {
-
+      $.snackbar({ content: 'An error occurred sending to printer' });
     },
 
     always: function(evt, data) {

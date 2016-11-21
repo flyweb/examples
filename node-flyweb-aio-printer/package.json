@@ -24,6 +24,8 @@
     "material-design-icons": "^3.0.1",
     "mdns": "^2.3.3",
     "morgan": "^1.7.0",
+    "multer": "^1.2.0",
+    "multer-autoreap": "^0.1.2",
     "node-printer": "^1.0.2",
     "roboto-fontface": "^0.6.0",
     "serve-favicon": "^2.3.0",

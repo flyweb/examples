@@ -38,6 +38,63 @@
     <div id="upload-progress" class="progress progress-striped active fade">
       <div class="progress-bar"></div>
     </div>
+
+    <!-- Print modal -->
+    <div id="print-modal" class="modal fade">
+      <div class="modal-dialog">
+        <div class="modal-content">
+          <div class="modal-header">
+            <h4 class="modal-title">Print</h4>
+          </div>
+          <div class="modal-body">
+            <form class="form-horizonal" id="print-form">
+              <fieldset>
+                <div class="form-group">
+                  <label for="print-copies" class="col-xs-2 control-label">Copies</label>
+                  <div class="col-xs-10">
+                    <input type="number" id="print-copies" class="form-control" name="_copies" value="1" min="1">
+                  </div>
+                </div>
+
+                <div class="form-group">
+                  <label class="col-xs-2 control-label">Color</label>
+                  <div class="col-xs-10">
+                    <div class="radio radio-primary">
+                      <label>
+                        <input type="radio" name="ColorModel" value="KGray">
+                        Black &amp; White
+                      </label>
+                    </div>
+                    <div class="radio radio-primary">
+                      <label>
+                        <input type="radio" name="ColorModel" value="RGB" checked>
+                        Color
+                      </label>
+                    </div>
+                  </div>
+                </div>
+
+                <div class="form-group">
+                  <label for="print-quality" class="col-xs-2 control-label">Quality</label>
+                  <div class="col-xs-10">
+                    <select id="print-quality" class="form-control" name="OutputMode">
+                      <option value="FastDraft">Draft</option>
+                      <option value="Normal" selected>Normal</option>
+                      <option value="Best">Best</option>
+                      <option value="Photo">Photo</option>
+                    </select>
+                  </div>
+                </div>
+              </fieldset>
+            </form>
+          </div>
+          <div class="modal-footer">
+            <button type="button" id="print-cancel-button" class="btn" data-dismiss="modal">Cancel</button>
+            <button type="button" id="print-print-button" class="btn btn-primary" data-dismiss="modal">Print</button>
+          </div>
+        </div>
+      </div>
+    </div>
   </div>
 
   <div id="scanner" class="tab-pane fade">

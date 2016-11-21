@@ -38,6 +38,11 @@ router.get('/api/printer/supplies', function(req, res, next) {
   });
 });
 
+router.post('/api/printer/print', function(req, res, next) {
+  console.log(req);
+  res.sendStatus(500);
+});
+
 router.get('/api/scanner/preview', function(req, res, next) {
   var params = {
     mode: 'Color',
