@@ -2,6 +2,8 @@
 
 A FlyWeb user interface for controlling an all-in-one printer/scanner
 
+Screenshots: [http://imgur.com/a/5vhN6](http://imgur.com/a/5vhN6)
+
 ### Setting up on a Raspberry Pi
 
 ```
