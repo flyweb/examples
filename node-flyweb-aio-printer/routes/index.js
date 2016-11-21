@@ -8,7 +8,7 @@ var fs = require('fs');
 /* GET / */
 router.get('/', function(req, res, next) {
   res.render('index', {
-    title: 'HP All-In-One'
+    title: 'FlyWeb All-In-One Printer'
   });
 });
 
@@ -39,8 +39,29 @@ router.get('/api/printer/supplies', function(req, res, next) {
 });
 
 router.post('/api/printer/print', function(req, res, next) {
-  console.log(req);
-  res.sendStatus(500);
+  var lpArgs = [];
+
+  if (parseInt(req.body._copies, 10)) {
+    lpArgs.push('-n');
+    lpArgs.push(req.body._copies);
+  }
+
+  for (var key in req.body) {
+    if (key.charAt(0) !== '_') {
+      lpArgs.push('-o');
+      lpArgs.push(key + '=' + req.body[key]);
+    }
+  }
+
+  if (req.files.length === 0) {
+    res.sendStatus(500);
+    return;
+  }
+
+  var lp = spawn('lp', lpArgs.concat(req.files[0].path));
+  lp.stdout.on('data', function(data) {
+    res.json({ result: data.toString() });
+  });
 });
 
 router.get('/api/scanner/preview', function(req, res, next) {
@@ -62,7 +83,7 @@ router.get('/api/scanner/preview', function(req, res, next) {
   scanimage.stdout.pipe(pnmtojpeg.stdin);
 
   scanimage.stderr.on('data', function(data) {
-    console.log(data);
+    console.log('Received `scanimage` data');
   });
 
   scanimage.on('close', function(code, signal) {
@@ -104,7 +125,7 @@ router.get('/api/scanner/scan', function(req, res, next) {
   scanimage.stdout.pipe(pnmtojpeg.stdin);
 
   scanimage.stderr.on('data', function(data) {
-    console.log(data);
+    console.log('Received `scanimage` data');
   });
 
   scanimage.on('close', function(code, signal) {

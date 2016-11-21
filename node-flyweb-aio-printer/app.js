@@ -20,7 +20,7 @@ app.set('view engine', 'hbs');
 app.use(logger('dev'));
 app.use(bodyParser.json());
 app.use(bodyParser.urlencoded({ extended: false }));
-app.use(multer({ dest: '/tmp/' }));
+app.use(multer({ dest: '/tmp/' }).any());
 app.use(autoReap);
 app.use(cookieParser());
 app.use('/vendor', express.static(path.join(__dirname, 'node_modules')));
