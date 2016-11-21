@@ -33,13 +33,16 @@ exit 0
 
 Be sure to restart after saving changes to `/etc/rc.local` with `sudo reboot`.
 
-### Notes
+Also, this is absolutely NOT recommended, but a *really* hacky way to auto-start the FlyWeb service when the Raspberry Pi boots is to add the following lines before `exit 0` in `/etc/rc.local`:
 
 ```
-lpoptions -l
-lp -n 2 -o ColorModel=CMYGray flyweb-architecture-diagrams.pdf
-lp -n 2 -o ColorModel=CMYGray -o OutputMode=FastDraft flyweb-architecture-diagrams.pdf
+cd {path_to_node-flyweb-aio-printer}
+npm run start &
 ```
+
+### Notes
+
+We should be able to auto-retrieve printer-specific features using `lpoptions -l` which returns an output that looks like:
 
 ```
 PageSize/Media Size: Card3x5 PhotoL PhotoL.FB L L.FB Hagaki Hagaki.FB Card4x6 Photo4x6 Photo4x6.FB A6 A6.FB HV HV.FB Photo5x7 Photo5x7.FB Photo2L Photo2L.FB Card5x8 Oufuku Cabinet Cabinet.FB A5 A5.FB B5.SM B5 JB5.SM JB5.FB JB5 Executive.SM Executive 8x10 Letter.SM Letter.FB Letter A4.SM A4.FB *A4 Legal EnvA2 EnvC6 EnvChou4 Env6 EnvCard EnvMonarch EnvDL Env10 EnvChou3 EnvC5 Custom.WIDTHxHEIGHT
