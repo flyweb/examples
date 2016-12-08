@@ -10,7 +10,7 @@ Screenshots: [http://imgur.com/a/5vhN6](http://imgur.com/a/5vhN6)
 sudo apt-get update
 sudo apt-get upgrade
 sudo apt-get remove nodejs
-curl -sL https://deb.nodesource.com/setup | sudo bash -
+curl -sL https://deb.nodesource.com/setup_6.x | sudo -E bash -
 sudo apt-get install nodejs libavahi-compat-libdnssd-dev
 sudo apt-get install hplip ink sane
 ```
