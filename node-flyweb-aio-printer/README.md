@@ -12,7 +12,7 @@ sudo apt-get upgrade
 sudo apt-get remove nodejs
 curl -sL https://deb.nodesource.com/setup_6.x | sudo -E bash -
 sudo apt-get install nodejs libavahi-compat-libdnssd-dev
-sudo apt-get install hplip ink sane
+sudo apt-get install hplip ink sane netpbm
 ```
 
 ##### Set up CUPS
@@ -20,6 +20,7 @@ sudo apt-get install hplip ink sane
 ```
 sudo apt-get install cups
 sudo usermod -a -G lpadmin pi
+sudo usermod -a -G lp pi
 sudo cupsctl --remote-any
 sudo /etc/init.d/cups restart
 ```
